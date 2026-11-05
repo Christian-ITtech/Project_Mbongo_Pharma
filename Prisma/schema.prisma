@@ -1,0 +1,111 @@
+// Schéma de la base Mbongo Pharma (PostgreSQL sur Neon, via Prisma 7)
+// Les dates sont stockées en UTC et affichées en Africa/Brazzaville (UTC+1).
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// --- ENUMS ---
+
+enum Role {
+  PHARMACY
+  ADMIN
+}
+
+enum StatutPharmacie {
+  EN_ATTENTE
+  APPROUVEE
+  REFUSEE
+}
+
+enum StatutStock {
+  DISPONIBLE
+  STOCK_FAIBLE
+  RUPTURE
+}
+
+enum Ville {
+  BRAZZAVILLE
+  POINTE_NOIRE
+}
+
+// --- MODÈLES ---
+
+model Utilisateur {
+  id         String   @id @default(cuid())
+  nom        String?
+  email      String   @unique
+  motDePasse String // Hash bcrypt, jamais le mot de passe en clair
+  role       Role     @default(PHARMACY)
+  creeLe     DateTime @default(now())
+  modifieLe  DateTime @updatedAt
+
+  pharmacie Pharmacie? // Un compte PHARMACY gère une seule pharmacie
+}
+
+model Pharmacie {
+  id        String          @id @default(cuid())
+  slug      String          @unique // Sert pour /pharmacies/[slug]
+  nom       String
+  adresse   String
+  quartier  String
+  ville     Ville
+  telephone String
+  whatsapp  String?
+  horaires  String? // Texte libre, ex : "Lun-Sam 8h-20h"
+  statut    StatutPharmacie @default(EN_ATTENTE)
+  creeLe    DateTime        @default(now())
+  modifieLe DateTime        @updatedAt
+
+  utilisateurId String      @unique
+  utilisateur   Utilisateur @relation(fields: [utilisateurId], references: [id], onDelete: Cascade)
+
+  stocks        StockItem[]
+  periodesGarde PeriodeGarde[]
+
+  @@index([ville, statut])
+}
+
+model Medicament {
+  id           String   @id @default(cuid())
+  nom          String   @unique
+  nomRecherche String // Nom en minuscules, sans accents, pour la recherche
+  creeLe       DateTime @default(now())
+
+  stocks StockItem[]
+
+  @@index([nomRecherche])
+}
+
+model StockItem {
+  id        String      @id @default(cuid())
+  statut    StatutStock @default(DISPONIBLE)
+  modifieLe DateTime    @updatedAt
+
+  pharmacieId String
+  pharmacie   Pharmacie @relation(fields: [pharmacieId], references: [id], onDelete: Cascade)
+
+  medicamentId String
+  medicament   Medicament @relation(fields: [medicamentId], references: [id], onDelete: Cascade)
+
+  @@unique([pharmacieId, medicamentId])
+  @@index([medicamentId])
+}
+
+model PeriodeGarde {
+  id        String   @id @default(cuid())
+  dateDebut DateTime // UTC
+  dateFin   DateTime // UTC
+  creeLe    DateTime @default(now())
+
+  pharmacieId String
+  pharmacie   Pharmacie @relation(fields: [pharmacieId], references: [id], onDelete: Cascade)
+
+  @@index([dateDebut, dateFin])
+  @@index([pharmacieId])
+}
