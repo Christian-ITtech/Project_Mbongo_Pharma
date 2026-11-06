@@ -1,0 +1,203 @@
+.main {
+    width: min(100% - 2rem, 1000px);
+    flex: 1;
+    margin: 1.8rem auto 0;
+}
+
+.breadcrumb {
+    margin: 0 0 0.65rem;
+    color: #5e7066;
+    font-size: 0.75rem;
+}
+
+.breadcrumb a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    color: #087a4d;
+    text-decoration: underline;
+}
+
+.pharmacyPanel,
+.stockPanel {
+    border: 1px solid #dfe9e2;
+    border-radius: 7px;
+    background: #fff;
+}
+
+.pharmacyPanel {
+    padding: 1.2rem;
+}
+
+.titleRow {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    flex-wrap: wrap;
+}
+
+.title {
+    margin: 0;
+    color: #1f3029;
+    font-size: 1.75rem;
+}
+
+.onCallBadge {
+    padding: 0.25rem 0.55rem;
+    border-radius: 999px;
+    background: #118454;
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.address,
+.contact {
+    margin: 0.35rem 0 0;
+    color: #52635a;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.contact a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.contact a:hover {
+    color: #087a4d;
+    text-decoration: underline;
+}
+
+.actions {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.actions a {
+    display: inline-flex;
+    min-height: 36px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0.9rem;
+    border: 1px solid #168454;
+    border-radius: 5px;
+    color: #087a4d;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.actions a:hover {
+    background: #edf7f1;
+}
+
+.stockPanel {
+    margin-top: 1rem;
+    padding: 1.2rem;
+}
+
+.stockHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.stockHeader h2 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.stockHeader p {
+    margin: 0;
+    color: #5e7066;
+    font-size: 0.72rem;
+    text-align: right;
+}
+
+.tableScroller {
+    overflow-x: auto;
+}
+
+.stockTable {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.stockTable th,
+.stockTable td {
+    padding: 0.65rem 0.55rem;
+    border-bottom: 1px solid #e8eeea;
+    font-size: 0.78rem;
+    white-space: nowrap;
+}
+
+.stockTable thead th {
+    color: #5e7066;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.stockTable tbody th {
+    font-weight: 400;
+}
+
+.statusBadge {
+    display: inline-block;
+    padding: 0.22rem 0.5rem;
+    border-radius: 999px;
+    font-size: 0.68rem;
+    font-weight: 600;
+}
+
+.available {
+    background: #e1f3e9;
+    color: #087a4d;
+}
+
+.lowStock {
+    background: #fff0cf;
+    color: #875600;
+}
+
+.outOfStock {
+    background: #fbe2e2;
+    color: #a23535;
+}
+
+@media (max-width: 600px) {
+    .main {
+        margin-top: 1.2rem;
+    }
+
+    .title {
+        font-size: 1.45rem;
+    }
+
+    .pharmacyPanel,
+    .stockPanel {
+        padding: 0.9rem;
+    }
+
+    .stockHeader {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.35rem;
+    }
+
+    .stockHeader p {
+        text-align: left;
+    }
+
+    .stockTable {
+        min-width: 600px;
+    }
+}

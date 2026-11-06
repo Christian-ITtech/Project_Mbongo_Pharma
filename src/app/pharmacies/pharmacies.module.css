@@ -1,53 +1,139 @@
-/* ======= Header ======= */
-header {
-    min-height: 150px;
-    margin-inline: 100px;
-    margin-bottom: 70px;
+.main {
+    width: min(100% - 2rem, 1000px);
+    flex: 1;
+    margin: 1.5rem auto 0;
+}
+
+.breadcrumb {
+    margin: 0 0 0.35rem;
+    color: #64746b;
+    font-size: 0.7rem;
+}
+
+.pageHeader {
+    margin-bottom: 1rem;
+}
+
+.title {
+    margin: 0;
+    color: #1f3029;
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.subtitle {
+    margin: 0.2rem 0 0;
+    color: #64746b;
+    font-size: 0.75rem;
+}
+
+.filters {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    padding: 1rem;
+    border: 1px solid #dfe9e2;
+    border-radius: 7px;
+    background: #fff;
+}
+
+.filterGroup {
     display: flex;
     flex-direction: column;
-    row-gap: 10px;
+    gap: 0.35rem;
 }
 
-.filter-section {
+.filterGroup label {
+    color: #34483e;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.filterGroup select {
+    width: 130px;
+    height: 33px;
+    padding: 0 0.55rem;
+    border: 1px solid #d0dbd4;
+    border-radius: 4px;
+    background: #fff;
+    color: #263a30;
+    font: inherit;
+    font-size: 0.75rem;
+}
+
+.onCallFilter {
     display: flex;
-    justify-content: space-between;
+    min-height: 33px;
     align-items: center;
-    padding: 20px 50px;
-    border-radius: 2px;
-    background-color: #FFFFFF;
+    gap: 0.45rem;
+    margin-left: 0.15rem;
+    color: #34483e;
+    font-size: 0.72rem;
 }
 
-.one,
-.two {
+.onCallFilter input {
+    width: 14px;
+    height: 14px;
+    margin: 0;
+    accent-color: #087a4d;
+}
+
+.filterButton {
+    min-height: 33px;
+    padding: 0 0.9rem;
+    border: 1px solid #087a4d;
+    border-radius: 5px;
+    background: #087a4d;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.filterButton:hover {
+    background: #06653f;
+}
+
+.pharmacyList {
     display: flex;
     flex-direction: column;
-    row-gap: 5px;
+    gap: 0.55rem;
+    margin-top: 0.7rem;
 }
 
-.three {
-    display: flex;
-    column-gap: 5px;
-    justify-content: center;
-    align-items: center;
+@media (max-width: 760px) {
+    .main {
+        width: min(100% - 2rem, 600px);
+        margin-top: 1.2rem;
+    }
+
+    .title {
+        font-size: 1.45rem;
+    }
+
+    .filters {
+        align-items: stretch;
+    }
+
+    .filterGroup {
+        flex: 1 1 130px;
+    }
+
+    .filterGroup select {
+        width: 100%;
+    }
+
+    .onCallFilter {
+        flex: 1 1 150px;
+        margin-left: 0;
+    }
 }
 
-.one select,
-.two select {
-    width: 100%;
-    max-width: 300px;
-    padding: 10px 15px;
-    font-size: 14px;
-    border-radius: 2px;
-    border: 1px solid rgb(214, 222, 219);
-    background-color: #FFFFFF;
-}
-
-button {
-    padding: 12px 40px;
-    border-radius: 2px;
-}
-
-/* ======= Main ======= */
-main {
-    margin: 0 100px;
+@media (max-width: 420px) {
+    .filterGroup,
+    .filterButton {
+        flex-basis: 100%;
+    }
 }

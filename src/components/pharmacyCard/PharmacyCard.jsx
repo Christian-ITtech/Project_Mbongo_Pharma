@@ -1,26 +1,61 @@
-import styles from './pharmacyCard.module.css'
+import Link from 'next/link';
+import styles from './pharmacyCard.module.css';
 
 export default function PharmacyCard({ pharmacy }) {
+    const paracetamol = pharmacy.stocks.find((stock) => stock.medicine === 'Paracétamol');
+    const statusClass = {
+        Disponible: styles.available,
+        'Stock faible': styles.lowStock,
+        Rupture: styles.outOfStock,
+    }[paracetamol?.status] ?? styles.unknownStatus;
 
     return (
-        <div className='card'>
-            <div className='card-infos'>
-                <div className='card-section-one'>
-                    <h2>Pharmacie du Marché</h2>
-                    <span className='primary-badge'>De garde ce soir</span>
+        <article className={styles.card}>
+            <div className={styles.information}>
+                <div className={styles.heading}>
+                    <h2 className={styles.title}>
+                        <Link href={`/pharmacies/${pharmacy.slug}`}>{pharmacy.name}</Link>
+                    </h2>
+                    {pharmacy.isOnCall && (
+                        <span className={styles.onCallBadge}>De garde ce soir</span>
+                    )}
                 </div>
-                <p>Poto-Poto, Brazzaville – 8h à 20h</p>
+                <p className={styles.location}>
+                    {pharmacy.neighborhood}, {pharmacy.city} – {pharmacy.hours.match(/\d.*$/)?.[0] ?? pharmacy.hours}
+                </p>
             </div>
-            <div className='card-price'>
-                <span className='secondary-badge'>Disponible</span>
-                <p>850 FCFA</p>
-                <span>Mis à jour il y a 2 h</span>
+
+            <div className={styles.stock}>
+                {paracetamol ? (
+                    <>
+                        <span className={`${styles.statusBadge} ${statusClass}`}>{paracetamol.status}</span>
+                        <span className={styles.price}>
+                            {paracetamol.price === null ? 'Prix non renseigné' : `${paracetamol.price.toLocaleString('fr-FR')} FCFA`}
+                        </span>
+                        <span className={styles.updatedAt}>Mis à jour {paracetamol.updatedAt}</span>
+                    </>
+                ) : (
+                    <span className={styles.unknownStatus}>Paracétamol non renseigné</span>
+                )}
             </div>
-            <div className='btn-group'>
-                <button>Appeler</button>
-                <button>WhatsApp</button>
-                <button>Itinérance</button>
+
+            <div className={styles.actions}>
+                <a href={`tel:${pharmacy.phone}`}>Appeler</a>
+                <a
+                    href={`https://wa.me/${pharmacy.whatsapp}?text=${encodeURIComponent('Bonjour, avez-vous du paracétamol en stock ?')}`}
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    WhatsApp
+                </a>
+                <a
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${pharmacy.address}, ${pharmacy.neighborhood}, ${pharmacy.city}`)}`}
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    Itinéraire
+                </a>
             </div>
-        </div>
+        </article>
     );
 }

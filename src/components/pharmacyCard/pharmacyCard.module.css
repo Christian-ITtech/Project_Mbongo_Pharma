@@ -1,76 +1,167 @@
-/*======== Card ======== */
 .card {
-    height: 100px;
-    border: 2px;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 120px auto;
     align-items: center;
-    background-color: #FFFFFF;
+    gap: 1.5rem;
+    min-height: 82px;
+    padding: 0.9rem 1rem;
+    border: 1px solid #dfe9e2;
+    border-radius: 7px;
+    background: #fff;
 }
 
-.card-infos p {
-    font-size: 14px;
-    color: rgb(113, 109, 109);
+.information {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 0.25rem;
 }
 
-.card-section-one {
+.heading {
     display: flex;
     align-items: center;
-    column-gap: 10px;
-    margin-bottom: 4px;
+    gap: 0.55rem;
+    flex-wrap: wrap;
 }
 
-.card-section-one h2 {
-    font-size: 18px;
-    letter-spacing: 0%;
+.title {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 700;
 }
 
-.card-price {
+.title a {
+    color: #263a30;
+    text-decoration: none;
+}
+
+.title a:hover {
+    color: #087a4d;
+    text-decoration: underline;
+}
+
+.onCallBadge {
+    padding: 0.22rem 0.5rem;
+    border-radius: 999px;
+    background: #118454;
+    color: #fff;
+    font-size: 0.6rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.location {
+    margin: 0;
+    color: #64746b;
+    font-size: 0.65rem;
+}
+
+.stock {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    row-gap: 5px;
+    align-items: flex-start;
+    gap: 0.25rem;
 }
 
-.card-price p {
-    font-weight: 800;
+.statusBadge,
+.unknownStatus {
+    padding: 0.22rem 0.5rem;
+    border-radius: 999px;
+    font-size: 0.6rem;
+    font-weight: 600;
+    white-space: nowrap;
 }
 
-.card-price span {
-    font-size: 14px;
-    color: rgb(113, 109, 109);
+.available {
+    background: #e1f3e9;
+    color: #087a4d;
 }
 
-/*======== Badge ======== */
-
-.primary-badge {
-    font-size: 14px;
-    font-weight: 500;
-    padding: 3px 10px;
-    border-radius: 18px;
-    color: #FFFFFF;
-    background-color: rgb(20, 162, 114);
+.lowStock {
+    background: #fff0cf;
+    color: #875600;
 }
 
-.secondary-badge {
-    font-size: 14px;
-    font-weight: 500;
-    padding: 3px 10px;
-    border-radius: 18px;
-    color: rgb(13, 13, 13);
-    background-color: rgb(50, 247, 181);
+.outOfStock {
+    background: #fbe2e2;
+    color: #a23535;
 }
 
-/*======== Button ======== */
-.btn-group {
+.unknownStatus {
+    background: #edf0ee;
+    color: #53645b;
+}
+
+.price {
+    color: #263a30;
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+
+.updatedAt {
+    color: #64746b;
+    font-size: 0.6rem;
+    white-space: nowrap;
+}
+
+.actions {
     display: flex;
-    column-gap: 10px;
+    justify-content: flex-end;
+    gap: 0.45rem;
 }
 
-.btn-group button {
-    background-color: #FFFFFF;
-    color: rgb(50, 247, 181);
-    border: 2px solid rgb(50, 247, 181);
-    border-radius: 12px;
+.actions a {
+    display: inline-flex;
+    min-height: 33px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0.8rem;
+    border: 1px solid #168454;
+    border-radius: 5px;
+    background: #fff;
+    color: #087a4d;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.actions a:hover {
+    background: #edf7f1;
+}
+
+@media (max-width: 760px) {
+    .card {
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 0.8rem 1rem;
+    }
+
+    .stock {
+        align-items: flex-end;
+    }
+
+    .actions {
+        grid-column: 1 / -1;
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 420px) {
+    .card {
+        grid-template-columns: 1fr;
+        gap: 0.7rem;
+    }
+
+    .stock {
+        align-items: flex-start;
+    }
+
+    .actions {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .actions a {
+        padding: 0 0.35rem;
+    }
 }
