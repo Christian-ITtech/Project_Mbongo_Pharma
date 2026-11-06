@@ -1,0 +1,25 @@
+.group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+}
+
+.button {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0.8rem;
+    border: 1px solid #168454;
+    border-radius: 5px;
+    background: #fff;
+    color: #087a4d;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.button:hover {
+    background: #edf7f1;
+}
