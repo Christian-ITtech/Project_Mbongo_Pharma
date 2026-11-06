@@ -40,16 +40,6 @@
     text-decoration: underline;
 }
 
-.onCallBadge {
-    padding: 0.22rem 0.5rem;
-    border-radius: 999px;
-    background: #118454;
-    color: #fff;
-    font-size: 0.6rem;
-    font-weight: 600;
-    white-space: nowrap;
-}
-
 .location {
     margin: 0;
     color: #64746b;

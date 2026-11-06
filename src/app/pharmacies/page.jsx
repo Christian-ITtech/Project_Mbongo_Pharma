@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 import PharmacyCard from '@/components/pharmacyCard/PharmacyCard';
 import PharmacyPublicLayout from '@/components/layout/PharmacyPublicLayout';
+import { getOnDutyPharmacySlugs } from '@/lib/duty';
 import { getApprovedPharmacies } from '@/lib/pharmacies';
 import styles from './pharmacies.module.css';
 
@@ -27,7 +28,12 @@ function getSingleParam(value) {
 }
 
 async function PharmacyResults({ searchParams }) {
-    const [params, pharmacies] = await Promise.all([searchParams, getApprovedPharmacies()]);
+    const [params, pharmacies, onDutySlugs] = await Promise.all([
+        searchParams,
+        getApprovedPharmacies(),
+        getOnDutyPharmacySlugs(),
+    ]);
+    const onDuty = new Set(onDutySlugs);
     const requestedCity = getSingleParam(params.ville);
     const selectedCity = cities.some((city) => city.value === requestedCity)
         ? requestedCity
@@ -45,7 +51,7 @@ async function PharmacyResults({ searchParams }) {
     const filteredPharmacies = pharmacies.filter((pharmacy) => (
         normalizeValue(pharmacy.city) === selectedCity
         && (selectedNeighborhood === 'all' || normalizeValue(pharmacy.neighborhood) === selectedNeighborhood)
-        && (!onCallOnly || pharmacy.isOnCall)
+        && (!onCallOnly || onDuty.has(pharmacy.slug))
     ));
 
     return (
@@ -87,7 +93,10 @@ async function PharmacyResults({ searchParams }) {
             <section className={styles.pharmacyList} aria-label={`Pharmacies de ${cityLabel}`}>
                 {filteredPharmacies.length > 0 ? (
                     filteredPharmacies.map((pharmacy) => (
-                        <PharmacyCard key={pharmacy.slug} pharmacy={pharmacy} />
+                    <PharmacyCard
+                        key={pharmacy.slug}
+                        pharmacy={{ ...pharmacy, isOnCall: onDuty.has(pharmacy.slug) }}
+                    />
                     ))
                 ) : (
                     <p className={styles.emptyState} role="status">

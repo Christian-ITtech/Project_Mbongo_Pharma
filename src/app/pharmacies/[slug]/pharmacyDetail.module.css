@@ -44,15 +44,6 @@
     font-size: 1.75rem;
 }
 
-.onCallBadge {
-    padding: 0.25rem 0.55rem;
-    border-radius: 999px;
-    background: #118454;
-    color: #fff;
-    font-size: 0.7rem;
-    font-weight: 600;
-}
-
 .address,
 .contact {
     margin: 0.35rem 0 0;

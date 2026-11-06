@@ -9,6 +9,6 @@ export default defineConfig({
   },
   datasource: {
     // Connexion directe Neon (sans -pooler), utilisée pour les migrations
-    url: process.env.DATABASE_URL,
+    url: process.env.DATABASE_URL_UNPOOLED,
   },
 })

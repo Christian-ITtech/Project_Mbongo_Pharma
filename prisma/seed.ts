@@ -10,9 +10,9 @@ import type { Medicament, Pharmacie } from '../generated/prisma/client'
 import { PrismaNeon } from '@prisma/adapter-neon'
 import * as bcrypt from 'bcryptjs'
 
-const connectionString = process.env.DATABASE_URL_POOLED
+const connectionString = process.env.DATABASE_URL_UNPOOLED
 if (!connectionString) {
-  throw new Error('DATABASE_URL_POOLED est manquante dans le fichier .env')
+  throw new Error('DATABASE_URL_UNPOOLED est manquante dans le fichier .env')
 }
 
 const adapter = new PrismaNeon({ connectionString })
