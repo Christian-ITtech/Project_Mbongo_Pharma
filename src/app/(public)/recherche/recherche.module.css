@@ -1,0 +1,313 @@
+.page {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background: #f3f8f4;
+    color: #23332c;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.siteHeader {
+    border-bottom: 1px solid #e6ece8;
+    background: #fff;
+}
+
+.navigation {
+    display: flex;
+    width: min(100% - 2rem, 1000px);
+    min-height: 50px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin: 0 auto;
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: #087a4d;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.brandIcon {
+    font-size: 1.65rem;
+    line-height: 1;
+}
+
+.navigationLinks {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.navigationLinks a {
+    color: #52635a;
+    font-size: 0.72rem;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.navigationLinks a:first-child {
+    color: #087a4d;
+    font-weight: 700;
+}
+
+.loginLink {
+    padding: 0.55rem 0.9rem;
+    border: 1px solid #168454;
+    border-radius: 5px;
+    color: #087a4d;
+    font-size: 0.72rem;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.main {
+    width: min(100% - 2rem, 1000px);
+    flex: 1;
+    margin: 1.8rem auto 0;
+}
+
+.breadcrumb {
+    margin: 0 0 0.65rem;
+    color: #5e7066;
+    font-size: 0.75rem;
+}
+
+.breadcrumb a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    color: #087a4d;
+    text-decoration: underline;
+}
+
+.searchSection {
+    margin-bottom: 0.9rem;
+}
+
+.title {
+    margin: 0;
+    color: #1f3029;
+    font-size: 1.75rem;
+    line-height: 1.25;
+}
+
+.resultCount {
+    margin: 0.2rem 0 1rem;
+    color: #64746b;
+    font-size: 0.75rem;
+}
+
+.searchForm {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.7rem;
+    padding: 1rem;
+    border: 1px solid #dfe9e2;
+    border-radius: 7px;
+    background: #fff;
+}
+
+.formField {
+    display: flex;
+    width: min(100%, 360px);
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.formField label {
+    color: #34483e;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.formField input {
+    min-height: 36px;
+    padding: 0 0.65rem;
+    border: 1px solid #d0dbd4;
+    border-radius: 4px;
+    background: #fff;
+    color: #263a30;
+    font: inherit;
+    font-size: 0.8rem;
+}
+
+.formField input:focus-visible,
+.searchButton:focus-visible,
+.navigation a:focus-visible,
+.pharmacyLink:focus-visible {
+    outline: 3px solid #82cba6;
+    outline-offset: 2px;
+}
+
+.searchButton {
+    min-height: 36px;
+    padding: 0 1rem;
+    border: 1px solid #087a4d;
+    border-radius: 5px;
+    background: #087a4d;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.searchButton:hover {
+    background: #06653f;
+}
+
+.results {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+
+.resultCard {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 170px;
+    align-items: center;
+    gap: 1rem;
+    min-height: 82px;
+    padding: 0.9rem 1rem;
+    border: 1px solid #dfe9e2;
+    border-radius: 7px;
+    background: #fff;
+}
+
+.pharmacyInfo h2 {
+    margin: 0;
+    color: #263a30;
+    font-size: 0.8rem;
+}
+
+.pharmacyInfo p {
+    margin: 0.25rem 0 0;
+    color: #64746b;
+    font-size: 0.65rem;
+}
+
+.stockInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+}
+
+.statusBadge {
+    padding: 0.22rem 0.5rem;
+    border-radius: 999px;
+    font-size: 0.6rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.available {
+    background: #e1f3e9;
+    color: #087a4d;
+}
+
+.lowStock {
+    background: #fff0cf;
+    color: #875600;
+}
+
+.outOfStock {
+    background: #fbe2e2;
+    color: #a23535;
+}
+
+.price {
+    color: #263a30;
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+
+.updatedAt {
+    color: #64746b;
+    font-size: 0.6rem;
+    white-space: nowrap;
+}
+
+.emptyState {
+    margin: 0.9rem 0;
+    padding: 1rem;
+    border: 1px solid #dfe9e2;
+    border-radius: 7px;
+    background: #fff;
+    color: #52635a;
+    font-size: 0.85rem;
+}
+
+.footer {
+    width: min(100% - 2rem, 1000px);
+    margin: 0 auto;
+    padding: 2rem 0;
+    color: #63736a;
+    font-size: 0.68rem;
+    line-height: 1.5;
+}
+
+@media (max-width: 760px) {
+    .navigation {
+        flex-wrap: wrap;
+        gap: 0.75rem 1rem;
+        padding: 0.65rem 0;
+    }
+
+    .navigationLinks {
+        order: 3;
+        width: 100%;
+        gap: 1rem;
+        overflow-x: auto;
+        padding-bottom: 0.2rem;
+    }
+
+    .main {
+        margin-top: 1.2rem;
+    }
+
+    .title {
+        font-size: 1.45rem;
+    }
+
+    .resultCard {
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 0.8rem 1rem;
+    }
+
+    .stockInfo {
+        align-items: flex-end;
+    }
+
+    .footer {
+        padding: 1.5rem 0;
+    }
+}
+
+@media (max-width: 420px) {
+    .searchForm {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .formField,
+    .searchButton {
+        width: 100%;
+    }
+
+    .resultCard {
+        grid-template-columns: 1fr;
+    }
+
+    .stockInfo {
+        align-items: flex-start;
+    }
+
+}

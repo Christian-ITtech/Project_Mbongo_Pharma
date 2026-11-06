@@ -1,26 +1,54 @@
-@import "tailwindcss";
-
+/* Mbongo Pharma – couleurs et styles de base (CSS classique, sans Tailwind) */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Marque : vert pharmacie */
+  --brand:        #0E7C4A;  /* boutons, liens actifs, badge "De garde" */
+  --brand-dark:   #0B6B3F;  /* logo, titres de marque, bandeau d'appel */
+  --brand-light:  #E1F2E8;  /* fonds légers, puces, menu actif */
+  --brand-ink:    #0B5C37;  /* texte sur --brand-light */
+
+  /* Surfaces */
+  --bg:           #F4F8F5;  /* fond de page */
+  --surface:      #FFFFFF;  /* cartes, en-tête, champs */
+
+  /* Texte */
+  --ink:          #1B2B24;  /* texte principal */
+  --ink-2:        #3D5247;  /* texte secondaire, navigation */
+  --muted:        #51655A;  /* aides, dates, pied de page */
+
+  /* Bordures */
+  --border:       #D5E3DA;  /* cartes, séparateurs */
+  --border-soft:  #E6EEE9;  /* lignes de tableau */
+  --border-input: #B9CCC0;  /* champs de formulaire */
+
+  /* Statuts du stock */
+  --ok-bg:        #E1F2E8;  --ok-ink:     #0B5C37;  /* Disponible */
+  --warn-bg:      #FFF0D1;  --warn-ink:   #774700;  /* Stock faible */
+  --danger-bg:    #FBE3E3;  --danger-ink: #8A1F1F;  /* Rupture */
+
+  /* Formes */
+  --radius:       8px;
+  --radius-sm:    6px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+*, *::before, *::after { box-sizing: border-box; }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scrollbar-gutter: stable;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-geist-sans, Inter), "Segoe UI", Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4, p, ul, ol { margin: 0; }
+
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
 }

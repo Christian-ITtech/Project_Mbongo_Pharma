@@ -1,0 +1,160 @@
+.main {
+    width: min(100%, 64rem);
+    flex: 1;
+    min-height: 38rem;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+@media (min-width: 640px) {
+    .main {
+        padding-right: 1.5rem;
+        padding-left: 1.5rem;
+    }
+}
+
+.breadcrumb {
+    margin: 0 0 0.35rem;
+    color: var(--muted);
+    font-size: 0.7rem;
+}
+
+.pageHeader {
+    margin-bottom: 1rem;
+}
+
+.title {
+    margin: 0;
+    color: var(--ink);
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.subtitle {
+    margin: 0.2rem 0 0;
+    color: var(--muted);
+    font-size: 0.75rem;
+}
+
+.filters {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+}
+
+.filterGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.filterGroup label {
+    color: var(--ink-2);
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.filterGroup select {
+    width: 130px;
+    height: 33px;
+    padding: 0 0.55rem;
+    border: 1px solid var(--border-input);
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    color: var(--ink);
+    font: inherit;
+    font-size: 0.75rem;
+}
+
+.onCallFilter {
+    display: flex;
+    min-height: 33px;
+    align-items: center;
+    gap: 0.45rem;
+    margin-left: 0.15rem;
+    color: var(--ink-2);
+    font-size: 0.72rem;
+}
+
+.onCallFilter input {
+    width: 14px;
+    height: 14px;
+    margin: 0;
+    accent-color: #087a4d;
+}
+
+.filterButton {
+    min-height: 33px;
+    padding: 0 0.9rem;
+    border: 1px solid var(--brand);
+    border-radius: var(--radius-sm);
+    background: var(--brand);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.filterButton:hover {
+    background: var(--brand-dark);
+}
+
+.pharmacyList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    margin-top: 0.7rem;
+}
+
+.emptyState {
+    margin: 0;
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+    color: var(--ink-2);
+    font-size: 0.85rem;
+}
+
+@media (max-width: 760px) {
+    .main {
+        width: min(100%, 38rem);
+        min-height: 32rem;
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+
+    .title {
+        font-size: 1.45rem;
+    }
+
+    .filters {
+        align-items: stretch;
+    }
+
+    .filterGroup {
+        flex: 1 1 130px;
+    }
+
+    .filterGroup select {
+        width: 100%;
+    }
+
+    .onCallFilter {
+        flex: 1 1 150px;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 420px) {
+    .filterGroup,
+    .filterButton {
+        flex-basis: 100%;
+    }
+}
