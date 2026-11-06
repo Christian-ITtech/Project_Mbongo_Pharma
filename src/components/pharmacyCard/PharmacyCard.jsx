@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ContactButtons from '@/components/pharmacy/ContactButtons';
 import styles from './pharmacyCard.module.css';
 
 export default function PharmacyCard({ pharmacy }) {
@@ -40,19 +41,13 @@ export default function PharmacyCard({ pharmacy }) {
             </div>
 
             <div className={styles.actions}>
-                <a href={`tel:${pharmacy.phone}`}>Appeler</a>
-                <a
-                    href={`https://wa.me/${pharmacy.whatsapp}?text=${encodeURIComponent('Bonjour, avez-vous du paracétamol en stock ?')}`}
-                    target="_blank"
-                    rel="noreferrer"
-                >
-                    WhatsApp
-                </a>
-                <a
-                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${pharmacy.address}, ${pharmacy.neighborhood}, ${pharmacy.city}`)}`}
-                    target="_blank"
-                    rel="noreferrer"
-                >
+                <ContactButtons
+                    phone={pharmacy.phone}
+                    whatsapp={pharmacy.whatsapp}
+                    pharmacyName={pharmacy.name}
+                    medicine="paracétamol"
+                />
+                <a className={styles.itinerary} href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${pharmacy.address}, ${pharmacy.neighborhood}, ${pharmacy.city}`)}`} target="_blank" rel="noopener noreferrer">
                     Itinéraire
                 </a>
             </div>

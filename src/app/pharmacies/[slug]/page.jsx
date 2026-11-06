@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import PharmacyPublicLayout from '@/components/layout/PharmacyPublicLayout';
+import ContactButtons from '@/components/pharmacy/ContactButtons';
 import { getApprovedPharmacyBySlug } from '@/lib/pharmacies';
 import { mockPharmacies } from '@/lib/mock-pharmacies';
 import styles from './pharmacyDetail.module.css';
@@ -47,18 +48,16 @@ export default async function PharmacyDetailPage({ params }) {
                         <a href={`tel:${pharmacy.phone}`}>{pharmacy.displayPhone}</a>
                     </p>
                     <div className={styles.actions}>
-                        <a href={`tel:${pharmacy.phone}`}>Appeler</a>
-                        <a
-                            href={`https://wa.me/${pharmacy.whatsapp}?text=${encodeURIComponent('Bonjour, avez-vous un médicament en stock ?')}`}
-                            target="_blank"
-                            rel="noreferrer"
-                        >
-                            WhatsApp
-                        </a>
+                        <ContactButtons
+                            phone={pharmacy.phone}
+                            whatsapp={pharmacy.whatsapp}
+                            pharmacyName={pharmacy.name}
+                            medicine="paracétamol"
+                        />
                         <a
                             href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${pharmacy.address}, ${pharmacy.neighborhood}, ${pharmacy.city}`)}`}
                             target="_blank"
-                            rel="noreferrer"
+                            rel="noopener noreferrer"
                         >
                             Itinéraire
                         </a>
