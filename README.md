@@ -20,6 +20,10 @@ You can start editing the page by modifying `app/page.js`. The page auto-updates
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Rendu de la recherche
+
+La page `/recherche?q=paracétamol` utilise le rendu côté serveur (SSR) : elle lit le paramètre `q` à chaque requête, puis cherche les pharmacies approuvées qui référencent le médicament. La recherche ignore les accents et la casse. En attendant la base de données, les données fictives se trouvent dans `src/lib/mock-search-data.js`.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
