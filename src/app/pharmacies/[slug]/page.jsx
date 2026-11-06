@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import PharmacyPublicLayout from '@/components/layout/PharmacyPublicLayout';
@@ -20,7 +21,7 @@ export function generateStaticParams() {
         .map((pharmacy) => ({ slug: pharmacy.slug }));
 }
 
-export default async function PharmacyDetailPage({ params }) {
+async function PharmacyDetailContent({ params }) {
     const { slug } = await params;
     const pharmacy = await getApprovedPharmacyBySlug(slug);
 
@@ -103,5 +104,24 @@ export default async function PharmacyDetailPage({ params }) {
                 </section>
             </main>
         </PharmacyPublicLayout>
+    );
+}
+
+function PharmacyDetailFallback() {
+    return (
+        <PharmacyPublicLayout>
+            <main className={styles.main}>
+                <p className={styles.breadcrumb}>Pharmacies</p>
+                <p className={styles.pharmacyPanel}>Chargement de la pharmacie…</p>
+            </main>
+        </PharmacyPublicLayout>
+    );
+}
+
+export default function PharmacyDetailPage({ params }) {
+    return (
+        <Suspense fallback={<PharmacyDetailFallback />}>
+            <PharmacyDetailContent params={params} />
+        </Suspense>
     );
 }

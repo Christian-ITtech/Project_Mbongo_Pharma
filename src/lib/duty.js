@@ -1,5 +1,5 @@
-import { cacheLife, cacheTag } from 'next/cache';
 import { prisma } from '@/lib/prisma';
+import { unstable_cache } from 'next/cache';
 
 function activeAt(now) {
     return {
@@ -8,21 +8,24 @@ function activeAt(now) {
     };
 }
 
-export async function getOnDutyPharmacySlugs() {
-    'use cache';
+const getCachedOnDutyPharmacySlugs = unstable_cache(
+    async () => {
+        const now = new Date();
+        const rows = await prisma.periodeGarde.findMany({
+            where: {
+                ...activeAt(now),
+                pharmacie: { statut: 'APPROUVEE' },
+            },
+            select: { pharmacie: { select: { slug: true } } },
+            distinct: ['pharmacieId'],
+        });
 
-    cacheLife({ stale: 300, revalidate: 300, expire: 3600 });
-    cacheTag('pharmacies-duty');
+        return rows.map((row) => row.pharmacie.slug);
+    },
+    ['pharmacies-duty'],
+    { revalidate: 300, tags: ['pharmacies-duty'] },
+);
 
-    const now = new Date();
-    const rows = await prisma.periodeGarde.findMany({
-        where: {
-            ...activeAt(now),
-            pharmacie: { statut: 'APPROUVEE' },
-        },
-        select: { pharmacie: { select: { slug: true } } },
-        distinct: ['pharmacieId'],
-    });
-
-    return rows.map((row) => row.pharmacie.slug);
+export function getOnDutyPharmacySlugs() {
+    return getCachedOnDutyPharmacySlugs();
 }
