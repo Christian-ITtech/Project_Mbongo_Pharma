@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import PharmacyPublicLayout from '@/components/layout/PharmacyPublicLayout';
@@ -30,7 +31,7 @@ function formatPeriod(dateDebut, dateFin) {
     return `${dateFormatter.format(new Date(dateDebut))} au ${dateFormatter.format(new Date(dateFin))}`;
 }
 
-export default async function OnDutyPharmaciesByCityPage({ params }) {
+async function OnDutyPharmaciesContent({ params }) {
     const { ville } = await params;
     const city = cities[ville];
 
@@ -98,5 +99,24 @@ export default async function OnDutyPharmaciesByCityPage({ params }) {
                 )}
             </main>
         </PharmacyPublicLayout>
+    );
+}
+
+function OnDutyPharmaciesFallback() {
+    return (
+        <PharmacyPublicLayout>
+            <main className={styles.main}>
+                <p className={styles.breadcrumb}>Pharmacies de garde</p>
+                <p className={styles.emptyState}>Chargement des pharmacies de garde…</p>
+            </main>
+        </PharmacyPublicLayout>
+    );
+}
+
+export default function OnDutyPharmaciesByCityPage({ params }) {
+    return (
+        <Suspense fallback={<OnDutyPharmaciesFallback />}>
+            <OnDutyPharmaciesContent params={params} />
+        </Suspense>
     );
 }
