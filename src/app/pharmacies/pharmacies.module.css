@@ -103,6 +103,16 @@
     margin-top: 0.7rem;
 }
 
+.emptyState {
+    margin: 0;
+    padding: 1rem;
+    border: 1px solid #dfe9e2;
+    border-radius: 7px;
+    background: #fff;
+    color: #52635a;
+    font-size: 0.85rem;
+}
+
 @media (max-width: 760px) {
     .main {
         width: min(100% - 2rem, 600px);
