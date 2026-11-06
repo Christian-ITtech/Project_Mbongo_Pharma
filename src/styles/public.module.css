@@ -4,7 +4,7 @@
 .main { padding-top: 32px; padding-bottom: 32px; }
 
 .stack { display: flex; flex-direction: column; gap: 40px; }
-.article { display: flex; flex-direction: column; gap: 32px; max-width: 48rem; }
+.article { display: flex; flex-direction: column; gap: 32px; max-width: 56rem; }
 .stackSm { display: flex; flex-direction: column; gap: 16px; }
 
 /* Accueil */
@@ -44,6 +44,7 @@
 .ctaButton:hover { background: var(--brand-light); }
 
 /* Pages d'explication */
+.pageIntro { max-width: 42rem; }
 .pageTitle { font-size: 1.875rem; font-weight: 700; color: var(--ink); }
 .grid3 { display: grid; gap: 16px; }
 @media (min-width: 640px) { .grid3 { grid-template-columns: repeat(3, 1fr); } }

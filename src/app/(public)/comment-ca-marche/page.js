@@ -17,14 +17,14 @@ const steps = [
 export default function HowItWorksPage() {
   return (
     <article className={styles.article}>
-      <header>
+      <header className={styles.pageIntro}>
         <h1 className={styles.pageTitle}>Comment ça marche</h1>
         <p className={styles.lead}>
           Mbongo Pharma vous évite de faire le tour des pharmacies pour trouver un médicament.
         </p>
       </header>
 
-      <div className={styles.stackSm}>
+      <div className={styles.grid3}>
         {steps.map((s) => (
           <section key={s.title} className={ui.card}>
             <h2 className={styles.cardHeading}>{s.title}</h2>

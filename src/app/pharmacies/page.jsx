@@ -107,7 +107,7 @@ export default function PharmaciesPage({ searchParams }) {
     return (
         <PharmacyPublicLayout>
             <main className={styles.main}>
-                <p className={styles.breadcrumb}>Accueil / Recherche</p>
+                <p className={styles.breadcrumb}>Accueil / Pharmacies</p>
                 <Suspense fallback={<PharmacyResultsFallback />}>
                     <PharmacyResults searchParams={searchParams} />
                 </Suspense>
