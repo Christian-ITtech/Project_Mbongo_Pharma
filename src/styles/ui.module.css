@@ -1,0 +1,53 @@
+/* Éléments réutilisables : conteneur, boutons, carte, champs de formulaire */
+.container {
+  width: 100%;
+  max-width: 72rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+@media (min-width: 640px) {
+  .container { padding-left: 24px; padding-right: 24px; }
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1px solid var(--brand);
+  border-radius: var(--radius-sm);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btnPrimary { background: var(--brand); color: #fff; }
+.btnPrimary:hover { background: var(--brand-dark); }
+.btnOutline { background: var(--surface); color: var(--brand-dark); }
+.btnOutline:hover { background: var(--brand-light); }
+
+.card {
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.label { display: block; font-size: 0.875rem; font-weight: 600; color: var(--ink-2); }
+.input {
+  width: 100%;
+  min-height: 44px;
+  margin-top: 4px;
+  padding: 0 12px;
+  border: 1px solid var(--border-input);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+}
+.input::placeholder { color: var(--muted); }
