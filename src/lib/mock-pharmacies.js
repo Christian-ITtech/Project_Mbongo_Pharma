@@ -1,5 +1,21 @@
 export const mockPharmacies = [
     {
+        slug: 'pharmacie-du-plateau',
+        name: 'Pharmacie du Plateau',
+        address: '5 rue des Palmiers',
+        neighborhood: 'Plateau',
+        city: 'Brazzaville',
+        phone: '+242060000002',
+        displayPhone: '06 000 00 02',
+        whatsapp: '242060000002',
+        hours: 'Lundi au dimanche, 7h30 à 21h',
+        isOnCall: false,
+        approvalStatus: 'APPROUVEE',
+        stocks: [
+            { medicine: 'Paracétamol', form: 'Comprimé', status: 'Disponible', price: 850, updatedAt: 'il y a 1 h' },
+        ],
+    },
+    {
         slug: 'pharmacie-du-marche',
         name: 'Pharmacie du Marché',
         address: 'Avenue de la Paix',
