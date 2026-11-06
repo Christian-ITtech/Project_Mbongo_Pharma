@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import ContactButtons from '@/components/pharmacy/ContactButtons';
+import DutyBadge from '@/components/pharmacy/DutyBadge';
 import styles from './pharmacyCard.module.css';
 
 export default function PharmacyCard({ pharmacy }) {
@@ -17,9 +18,7 @@ export default function PharmacyCard({ pharmacy }) {
                     <h2 className={styles.title}>
                         <Link href={`/pharmacies/${pharmacy.slug}`}>{pharmacy.name}</Link>
                     </h2>
-                    {pharmacy.isOnCall && (
-                        <span className={styles.onCallBadge}>De garde ce soir</span>
-                    )}
+                    {pharmacy.isOnCall && <DutyBadge />}
                 </div>
                 <p className={styles.location}>
                     {pharmacy.neighborhood}, {pharmacy.city} – {pharmacy.hours.match(/\d.*$/)?.[0] ?? pharmacy.hours}

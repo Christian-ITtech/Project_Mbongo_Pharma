@@ -1,7 +1,10 @@
+import { Suspense } from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import PharmacyPublicLayout from '@/components/layout/PharmacyPublicLayout';
 import ContactButtons from '@/components/pharmacy/ContactButtons';
+import DutyBadge from '@/components/pharmacy/DutyBadge';
+import { getOnDutyPharmacySlugs } from '@/lib/duty';
 import { getApprovedPharmacyBySlug } from '@/lib/pharmacies';
 import { mockPharmacies } from '@/lib/mock-pharmacies';
 import styles from './pharmacyDetail.module.css';
@@ -18,13 +21,16 @@ export function generateStaticParams() {
         .map((pharmacy) => ({ slug: pharmacy.slug }));
 }
 
-export default async function PharmacyDetailPage({ params }) {
+async function PharmacyDetailContent({ params }) {
     const { slug } = await params;
     const pharmacy = await getApprovedPharmacyBySlug(slug);
 
     if (!pharmacy) {
         notFound();
     }
+
+    const onDutySlugs = await getOnDutyPharmacySlugs();
+    const isOnDuty = onDutySlugs.includes(pharmacy.slug);
 
     return (
         <PharmacyPublicLayout>
@@ -36,9 +42,7 @@ export default async function PharmacyDetailPage({ params }) {
                 <section className={styles.pharmacyPanel} aria-labelledby="pharmacy-name">
                     <div className={styles.titleRow}>
                         <h1 className={styles.title} id="pharmacy-name">{pharmacy.name}</h1>
-                        {pharmacy.isOnCall && (
-                            <span className={styles.onCallBadge}>De garde ce soir</span>
-                        )}
+                        {isOnDuty && <DutyBadge />}
                     </div>
                     <p className={styles.address}>
                         {pharmacy.address}, {pharmacy.neighborhood}, {pharmacy.city}
@@ -100,5 +104,24 @@ export default async function PharmacyDetailPage({ params }) {
                 </section>
             </main>
         </PharmacyPublicLayout>
+    );
+}
+
+function PharmacyDetailFallback() {
+    return (
+        <PharmacyPublicLayout>
+            <main className={styles.main}>
+                <p className={styles.breadcrumb}>Pharmacies</p>
+                <p className={styles.pharmacyPanel}>Chargement de la pharmacie…</p>
+            </main>
+        </PharmacyPublicLayout>
+    );
+}
+
+export default function PharmacyDetailPage({ params }) {
+    return (
+        <Suspense fallback={<PharmacyDetailFallback />}>
+            <PharmacyDetailContent params={params} />
+        </Suspense>
     );
 }

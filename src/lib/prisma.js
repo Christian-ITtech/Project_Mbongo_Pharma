@@ -4,7 +4,7 @@ const globalPourPrisma = globalThis
 
 function creerClient() {
   const adapter = new PrismaNeon({
-    connectionString: process.env.DATABASE_URL_POOLED,
+    connectionString: process.env.DATABASE_URL,
   })
   return new PrismaClient({ adapter })
 }
