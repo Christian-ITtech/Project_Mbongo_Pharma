@@ -1,0 +1,53 @@
+/* ======= Header ======= */
+header {
+    min-height: 150px;
+    margin-inline: 100px;
+    margin-bottom: 70px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.filter-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    border-radius: 2px;
+    background-color: #FFFFFF;
+}
+
+.one,
+.two {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+
+.three {
+    display: flex;
+    column-gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+.one select,
+.two select {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 2px;
+    border: 1px solid rgb(214, 222, 219);
+    background-color: #FFFFFF;
+}
+
+button {
+    padding: 12px 40px;
+    border-radius: 2px;
+}
+
+/* ======= Main ======= */
+main {
+    margin: 0 100px;
+}

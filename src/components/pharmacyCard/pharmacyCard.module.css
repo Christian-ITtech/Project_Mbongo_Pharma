@@ -1,0 +1,76 @@
+/*======== Card ======== */
+.card {
+    height: 100px;
+    border: 2px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFFFFF;
+}
+
+.card-infos p {
+    font-size: 14px;
+    color: rgb(113, 109, 109);
+}
+
+.card-section-one {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    margin-bottom: 4px;
+}
+
+.card-section-one h2 {
+    font-size: 18px;
+    letter-spacing: 0%;
+}
+
+.card-price {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 5px;
+}
+
+.card-price p {
+    font-weight: 800;
+}
+
+.card-price span {
+    font-size: 14px;
+    color: rgb(113, 109, 109);
+}
+
+/*======== Badge ======== */
+
+.primary-badge {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 18px;
+    color: #FFFFFF;
+    background-color: rgb(20, 162, 114);
+}
+
+.secondary-badge {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 18px;
+    color: rgb(13, 13, 13);
+    background-color: rgb(50, 247, 181);
+}
+
+/*======== Button ======== */
+.btn-group {
+    display: flex;
+    column-gap: 10px;
+}
+
+.btn-group button {
+    background-color: #FFFFFF;
+    color: rgb(50, 247, 181);
+    border: 2px solid rgb(50, 247, 181);
+    border-radius: 12px;
+}
