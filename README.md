@@ -20,6 +20,10 @@ You can start editing the page by modifying `app/page.js`. The page auto-updates
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Filtres de pharmacies
+
+La liste `/pharmacies` accepte les filtres GET `ville`, `quartier` et `oncall`. Les critères sont combinés côté serveur et conservés dans l’URL au rechargement. Les options de ville et de quartier proviennent des pharmacies approuvées présentes dans `src/lib/mock-pharmacies.js`, en attendant la base de données.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
